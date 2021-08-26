@@ -41,3 +41,39 @@ multiply2 = (a, b) => a * b;
 
 const multiply = (x: number, y: number): number => x * y;
 console.log(multiply(20, 6));
+
+// 29-7 set type for array and objects and see the structure of type
+
+const numbers: number[] = [2, 3, 5, 6, 7];
+numbers.push(30);
+
+const friends: string[] = ['Mohammad ', 'Noman', 'Sezan', 'Naim'];
+friends.push('Montu');
+
+let megaFriend: string = '';
+
+for (let i = 0; i < friends.length; i++) {
+	const friend: string = friends[i];
+	if (friend.length > megaFriend.length) {
+		megaFriend = friend;
+	}
+}
+
+console.log('Friends with the largest name:', megaFriend);
+
+// object
+
+let player: {
+	club: string;
+	payment: number;
+} = {
+	club: 'Real Madrid',
+	payment: 39454879,
+};
+
+const friend: { name: string; age: number } = {
+	name: 'Samuel David',
+	age: 39,
+};
+
+friend.age = 30;
