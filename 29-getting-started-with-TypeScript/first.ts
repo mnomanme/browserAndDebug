@@ -8,6 +8,7 @@ let age: number = 24;
 let club: string = 'Real Madrid';
 // const isFamous: boolean; // error
 let famous: boolean;
+famous = true;
 
 console.log(club);
 
@@ -25,3 +26,18 @@ function fullName(firstName: string, lastName: string): string {
 }
 
 const user: string = fullName('Abdul', 'Khan');
+
+// 29-6 function void return and arrow function type
+function doubleIt(num: number): void {
+	const result = num * 2;
+	console.log(result);
+}
+
+const output = doubleIt(10);
+console.log('output', output);
+
+let multiply2: (a: number, b: number) => number;
+multiply2 = (a, b) => a * b;
+
+const multiply = (x: number, y: number): number => x * y;
+console.log(multiply(20, 6));
