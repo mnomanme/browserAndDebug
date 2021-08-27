@@ -1,3 +1,4 @@
+// WARNING!!! THIS CODE HAS MANY ERRORS
 // 29-2 Setup typescript for local project and globally
 let myMoney = 500;
 myMoney = 100;
@@ -116,3 +117,27 @@ const poorPlayer2 = { age: 30, salary: 60 };
 
 // getBonus2(poorPlayer2);	//error
 getBonus2(messi, ['Noman']);
+
+// 29-9 Use type in class and explore private readonly protected
+
+class Person {
+	name: string;
+	private _partner: string;
+	readonly fatherName: string;
+	constructor(name: string, father: string) {
+		this.name = name;
+		this._partner = name;
+		this.fatherName = father;
+	}
+	getName(): string {
+		return this.name + '' + this._partner;
+	}
+}
+
+const sam = new Person('Pod', 'Rude');
+
+console.log('name', sam.name, sam.fatherName);
+
+const sameName: string = sam.getName();
+sam.name = 'Ben';
+// sam.fatherName = 'Ben Stoke'; // error can't change
