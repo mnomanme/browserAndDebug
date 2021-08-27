@@ -77,3 +77,42 @@ const friend: { name: string; age: number } = {
 };
 
 friend.age = 30;
+
+// 29-8 Typescript Interface and use complex parameter type
+interface Player {
+	name: string;
+	club: string;
+	salary: number;
+	wife?: boolean;
+}
+
+const messi: Player = {
+	name: 'messi',
+	club: 'FC Barcelona',
+	salary: 4500000,
+	wife: true,
+};
+
+const ronaldo: Player = {
+	name: 'Ronaldo',
+	club: 'Real Madrid',
+	salary: 40000000,
+};
+
+function getBonus(player: { age: number; salary: number }) {
+	return player.salary * 0.1;
+}
+
+const poorPlayer = { age: 30, salary: 60 };
+
+getBonus(poorPlayer);
+// getBonus(messi);	//error
+
+function getBonus2(player: Player, friends: string[]) {
+	return player.salary * 0.1;
+}
+
+const poorPlayer2 = { age: 30, salary: 60 };
+
+// getBonus2(poorPlayer2);	//error
+getBonus2(messi, ['Noman']);
