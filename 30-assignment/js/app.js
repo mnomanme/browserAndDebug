@@ -100,7 +100,6 @@ const createSlider = () => {
 		});
 	} else {
 		alert('Sorry negative value is not allowed in slider.');
-		document.querySelector('.main').style.display = 'none';
 	}
 	changeSlide(0);
 	timer = setInterval(function () {
