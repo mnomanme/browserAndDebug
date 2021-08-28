@@ -13,6 +13,11 @@
 	<body onload="fetchIssues()">
 		<div class="container">
 			<h1>Issue Tracker:</h1>
+			<div class="heading mb-6">
+				<p class="label issue-status-opend d-flex">Open issue: <span id="open"> </span></p>
+				<p class="label issue-status-closed d-flex">Closed issue: <span id="close"> </span></p>
+				<p class="label label-info d-flex">Total issue: <span id="total"> </span></p>
+			</div>
 			<div class="jumbotron">
 				<h3>Add New Issue:</h3>
 				<form id="issueInputForm">

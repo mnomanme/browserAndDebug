@@ -1,17 +1,29 @@
+body {
+	background-color: #c8c6c6;
+}
+
+.jumbotron {
+	background-color: #ffe6e6;
+}
+
 .line-through {
 	text-decoration: line-through;
 }
+
 .issue-status-closed {
 	background-color: rgb(27, 194, 27);
 }
+
 .issue-status,
-.issue-status-oped {
+.issue-status-opend {
 	background-color: rgb(221, 58, 58);
 }
+
 .heading {
 	display: inline-block;
 	margin-bottom: 10px;
 }
+
 .heading p {
 	display: inline-block;
 	padding: 5px 5px;
