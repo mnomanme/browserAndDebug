@@ -60,6 +60,7 @@ const selectItem = (event, img) => {
 		sliders.splice(item, 1);
 		// alert('Hey, Already added !');
 	}
+
 	// total  image count added
 	imgCount.innerHTML = `
 	<h3 class="py-2">Total Images Selected : ${sliders.length}</h3>
@@ -74,6 +75,7 @@ const createSlider = () => {
 		alert('Select at least 3 image.');
 		return;
 	}
+
 	// create slider previous next area
 	sliderContainer.innerHTML = '';
 	const prevNext = document.createElement('div');
@@ -85,18 +87,22 @@ const createSlider = () => {
 
 	sliderContainer.appendChild(prevNext);
 	document.querySelector('.main').style.display = 'block';
-	// hide image area
-	imagesArea.style.display = 'none';
-	const duration = Math.abs(document.getElementById('duration').value) || 3000;
-	sliders.map((slide) => {
-		let item = document.createElement('div');
-		item.className = 'slider-item';
-		item.innerHTML = `
-            <img class="w-100" src="${slide}" alt="">`;
-		sliderContainer.appendChild(item);
-	});
-	changeSlide(0);
 
+	// hide image aria
+	imagesArea.style.display = 'none';
+	const duration = document.getElementById('duration').value || 1000;
+	if (duration > 0) {
+		sliders.forEach((slide) => {
+			let item = document.createElement('div');
+			item.className = 'slider-item';
+			item.innerHTML = `<img class="w-100" src="${slide}" alt="">`;
+			sliderContainer.appendChild(item);
+		});
+	} else {
+		alert('Sorry negative value is not allowed in slider.');
+		document.querySelector('.main').style.display = 'none';
+	}
+	changeSlide(0);
 	timer = setInterval(function () {
 		slideIndex++;
 		changeSlide(slideIndex);
