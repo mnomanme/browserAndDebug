@@ -4,6 +4,8 @@ const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
+const imgCount = document.getElementById('img-count');
+const spinner = document.getElementById('spinner');
 
 // my API KEY
 // const API = `// https://pixabay.com/api/?key=${KEY}&q=${query}&image_type=photo&pretty=true`;
@@ -11,6 +13,7 @@ const KEY = '23123828-5dab4854dbd652a450144e361';
 
 // to get data
 const getImages = (query) => {
+	toggleSpinner();
 	fetch(`https://pixabay.com/api/?key=${KEY}&q=${query}&image_type=photo&pretty=true`)
 		.then((response) => response.json())
 		.then((data) => showImages(data.hits))
@@ -39,6 +42,8 @@ const showImages = (images) => {
 		`;
 		gallery.appendChild(div);
 	});
+	imgCount.innerHTML = '';
+	toggleSpinner();
 };
 
 // image selected & count image
@@ -46,7 +51,7 @@ let sliders = [];
 let slideIndex = 0;
 const selectItem = (event, img) => {
 	let element = event.target;
-	element.classList.add('added');
+	element.classList.toggle('added');
 
 	let item = sliders.indexOf(img);
 	if (item === -1) {
@@ -55,20 +60,25 @@ const selectItem = (event, img) => {
 		sliders.splice(item, 1);
 		// alert('Hey, Already added !');
 	}
+	// total  image count added
+	imgCount.innerHTML = `
+	<h3 class="py-2">Total Images Selected : ${sliders.length}</h3>
+	`;
 };
 
 var timer;
+
 const createSlider = () => {
 	// check slider image length
-	if (sliders.length < 2) {
-		alert('Select at least 2 image.');
+	if (sliders.length < 3) {
+		alert('Select at least 3 image.');
 		return;
 	}
 	// create slider previous next area
 	sliderContainer.innerHTML = '';
 	const prevNext = document.createElement('div');
 	prevNext.className = 'prev-next d-flex w-100 justify-content-between align-items-center';
-	prevNext.innerHTML = ` 
+	prevNext.innerHTML = `
         <span class="prev" onclick="changeItem(-1)"><i class="fas fa-chevron-left"></i></span>
         <span class="next" onclick="changeItem(1)"><i class="fas fa-chevron-right"></i></span>
         `;
@@ -77,8 +87,8 @@ const createSlider = () => {
 	document.querySelector('.main').style.display = 'block';
 	// hide image area
 	imagesArea.style.display = 'none';
-	const duration = document.getElementById('duration').value || 1000;
-	sliders.forEach((slide) => {
+	const duration = Math.abs(document.getElementById('duration').value) || 3000;
+	sliders.map((slide) => {
 		let item = document.createElement('div');
 		item.className = 'slider-item';
 		item.innerHTML = `
@@ -86,6 +96,7 @@ const createSlider = () => {
 		sliderContainer.appendChild(item);
 	});
 	changeSlide(0);
+
 	timer = setInterval(function () {
 		slideIndex++;
 		changeSlide(slideIndex);
@@ -128,3 +139,8 @@ searchBtn.addEventListener('click', function () {
 sliderBtn.addEventListener('click', function () {
 	createSlider();
 });
+
+// spinner
+const toggleSpinner = () => {
+	spinner.classList.toggle('d-none');
+};
