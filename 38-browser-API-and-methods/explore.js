@@ -13,4 +13,5 @@ const student = {
 student.makeMovie('Game of Thrones');
 
 // document.getElementById('name');
-fetch(``);
+// fetch(``);
+alert('abc');
