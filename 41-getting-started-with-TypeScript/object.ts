@@ -23,3 +23,12 @@ const employee: Person = {
 	age: 55,
 	salary: 47580,
 };
+
+function getSalary(player: { name?: string; salary: number }) {
+	return player.salary;
+}
+getSalary({ name: 'Noman', salary: 50 });
+
+function getSalaryTwo(player: Person): number {
+	return player.salary;
+}
