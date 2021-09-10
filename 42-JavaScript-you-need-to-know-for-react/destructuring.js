@@ -17,7 +17,7 @@ function boxify(num1, num2) {
 // const [first, second] = [90, 34]
 const [first, second] = boxify(90, 34);
 
-// console.log(boxify(90, 34));
+console.log(boxify(90, 34));
 const student = {
 	name: 'Noman Khan',
 	age: 32,
