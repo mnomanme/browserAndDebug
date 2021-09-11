@@ -5,14 +5,19 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Storage</title>
+		<!-- bootstrap css -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
 	</head>
 	<body>
-		<section>
+		<section class="container">
 			<h1>Local Storage and Session Storage</h1>
-			<input type="text" placeholder="storage id" id="storage-id" />
-			<input type="text" placeholder="storage value" id="storage-value" />
+			<input type="text" placeholder="storage id" class="form-control w-50" id="storage-id" />
 			<br />
-			<button onclick="addToLocalStorage()">Add to Local Storage</button>
+			<input type="text" placeholder="storage value" class="form-control w-50" id="storage-value" />
+			<br />
+			<button onclick="addToLocalStorage()" class="btn btn-info">Add to Local Storage</button>
 		</section>
+		<!-- script -->
+		<script src="./storage.js"></script>
 	</body>
 </html>
